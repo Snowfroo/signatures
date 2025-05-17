@@ -37,8 +37,9 @@
             border: 2px solid #333;
             background-color: #fff;
             cursor: crosshair;
-            width: 300px;
-            height: 200px;
+            /* New dimensions for 2:5 ratio (width:height) */
+            width: 500px;  /* You can adjust this, height will adjust accordingly */
+            height: 200px; /* height = width / (5/2) = width * 2/5 */
             margin-bottom: 0.2em;
         }
 
@@ -144,7 +145,7 @@
     <h1>Senior Hoodie Signatures</h1>
     <p>Draw your signature, which will be showcased on the front of the Class of 2026 Senior Hoodie design.</p>
     <input type="text" id="nameInput" placeholder="Enter your name">
-    <canvas id="signatureCanvas" width="300" height="200"></canvas>
+    <canvas id="signatureCanvas" width="500" height="200"></canvas>
     <div>
         <button id="clearBtn">Clear</button>
     </div>
@@ -284,15 +285,15 @@
             document.body.removeChild(a);
         });
 
-        undoBtn.addEventListener('click', (e) => { // Changed to (e)
-            e.preventDefault(); // added preventDefault
+        undoBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             if (historyStep > 0) {
                 drawFromHistory(historyStep - 1);
             }
         });
 
-        redoBtn.addEventListener('click', (e) => { // Changed to (e)
-             e.preventDefault();  // added preventDefault
+        redoBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             if (historyStep < history.length - 1) {
                 drawFromHistory(historyStep + 1);
             }
